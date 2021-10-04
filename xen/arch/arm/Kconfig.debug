@@ -148,6 +148,9 @@ choice
 	config EARLY_PRINTK_RCAR3
 		bool "Early printk with SCIF2 on Renesas R-Car Gen3 processors"
 		select EARLY_UART_SCIF
+	config EARLY_PRINTK_RK3399
+		bool "Early printk with 8250 on Rockchip 3399 processors"
+		select EARLY_UART_8250
 	config EARLY_PRINTK_SEATTLE
 		bool "Early printk with pl011 for AMD Seattle processor"
 		select EARLY_UART_PL011
@@ -216,6 +219,7 @@ config EARLY_UART_BASE_ADDRESS
 	default 0xfff36000 if EARLY_PRINTK_MIDWAY
 	default 0xd0012000 if EARLY_PRINTK_MVEBU
 	default 0x48020000 if EARLY_PRINTK_OMAP5432
+	default 0xff1a0000 if EARLY_PRINTK_RK3399
 	default 0xe6e88000 if EARLY_PRINTK_RCAR3
 	default 0xe1010000 if EARLY_PRINTK_SEATTLE
 	default 0x01c28000 if EARLY_PRINTK_SUN6I
@@ -257,6 +261,7 @@ config EARLY_UART_8250_REG_SHIFT
 	default 2 if EARLY_PRINTK_BRCM
 	default 2 if EARLY_PRINTK_DRA7
 	default 2 if EARLY_PRINTK_OMAP5432
+	default 2 if EARLY_PRINTK_RK3399
 	default 2 if EARLY_PRINTK_SUN6I
 	default 2 if EARLY_PRINTK_SUN7I
 	default 2 if EARLY_PRINTK_XGENE_MCDIVITT
